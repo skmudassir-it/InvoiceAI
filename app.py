@@ -23,6 +23,9 @@ def inp_imgSetup(uploaded_file):
                 "data": bytes_data
             }
         ]
+        return image_parts
+    else:
+        raise FileNotFoundError("No File Uploaded")
 
 st.set_page_config(page_title="Automatic AI Invoice Extractor")
 st.header("AI Invoice Extractor")
@@ -42,4 +45,7 @@ and you will have to answer any question based on the invoice image provided
 """
 
 if submit:
-    image
+    image_data = inp_imgSetup(uploaded_file)
+    response = get_resp(inp_prompt, image_data, input)
+    st.subheader("The Response is ")
+    st.write(response)
