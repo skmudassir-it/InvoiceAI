@@ -30,6 +30,7 @@ def inp_imgSetup(uploaded_file):
 st.set_page_config(page_title="Automatic AI Invoice Extractor")
 st.header("AI Invoice Extractor")
 input=st.text_input("Input Prompt: ", key="input")
+submit = st.button("Tell me about the invoice")
 uploaded_file = st.file_uploader("Choose an image of the invoice...", type=["jpg", "jpeg", "png"])
 image = ""
 
@@ -37,7 +38,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
-submit = st.button("Tell me about the invoice")
+
 
 inp_prompt = """
 you are an expert in understanding invoices. we will upload a image as invoices, 
